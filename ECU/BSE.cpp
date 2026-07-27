@@ -1,5 +1,6 @@
 #include <SPI.h>
 // #include <cstdint>
+// #include <cstdint>
 #include "Arduino.h"
 #include "C:\Users\kanek\kanek_project\frta\program\mcp_can.h"
 #include "C:\Users\kanek\kanek_project\frta\program\mcp_can_dfs.h"
@@ -19,7 +20,8 @@ const unsigned long now = millis();
 bool IsReceivedData = false;
 long lastReceiveTime = 0;
 
-constexpr uint8_t BRAKE_POINT = 5;
+constexpr uint8_t BRAKE_POINT = 5; // ブレーキペダル入力ピン
+constexpr uint8_t BRAKE_LANP_POINT = 7; // ブレーキランプ出力ピン
 
 enum BSE_Status {
     BSE_SYNC, // 同期
@@ -64,20 +66,23 @@ void BSE_monitor() {
             }
             byte brake = 0;
             brake = brake_val(); //TODO BSEの値をどう送るか CANか、何かしらarduinoから直接送ってしまうのか
+            txBuf[1] = brake; // txBuf[1]にbrakeの値を格納
+            CAN0.sendMsgBuf(0x100, 0, 8, txBuf); // ID100でtxBufを送信
+            brake_lanp(brake);
+            IsHardBrake(brake, max);
             Serial.print("brake_val: ");Serial.println(brake);
 
             break;
         case BSE_ERR:
             Serial.println("BSE_ERR");
-            txBuf[1] = 0xFF;
-            CAN0.sendMsgBuf(0x100, 0, 8, txBuf); // ID100にtxBufを送信
+            txBuf[7] = 0xFF; // txBuf[7]にFFを格納
+            CAN0.sendMsgBuf(0x100, 0, 8, txBuf); // ID100でtxBufを送信
     }
 }
 
 void receiveID100() { // ID100のメッセージを受け取る
     if(CAN0.checkReceive() == CAN_MSGAVAIL) {
         CAN0.readMsgBuf(&rxID, &rxlen, rxBuf);
-
         if(rxID == 0x100) {
             receivedCnt = rxBuf[0]; // 受信したデータの0byte目をrecivedcntに代入
             IsReceivedData = true; // BSEからID100受信
@@ -85,18 +90,50 @@ void receiveID100() { // ID100のメッセージを受け取る
     }
 }
 
+//! 動作未確認
 //TODO ハードブレーキの定義を決める
 int brake_val() {
-    int actual_val[10] = {};
+    int actual_val[10] = {}; // ここRAM節約できる
     int average_val = 0;
+    int gain = 200;
     float scalling = 255.0 / 1023.0;
     for (int i=0;i<10;++i) {
-        *(actual_val + i) = analogRead(BRAKE_POINT);
-        average_val += *(actual_val + i);
+        actual_val[i] = analogRead(BRAKE_POINT);
+        average_val += actual_val[i];
     }
 
-    average_val /= 200;
-    average_val *= scalling;
+    average_val /= gain;
+    average_val *= scalling; // スケーリング
 
-    return average_val;
+    // 最大値計算
+    int max_val = 1023 * 10;
+    int av_max_val = max_val /= gain;
+    av_max_val *= scalling;
+
+    return average_val, av_max_val;
+}
+
+void BSE_Pin_Setup() {
+    pinMode(BRAKE_POINT, INPUT);
+    pinMode(BRAKE_LANP_POINT, OUTPUT);
+}
+
+//! 動作未確認
+int brake_lanp(byte brake) {
+    if (brake >= 1) { // ブレーキペダルから受け取った値が１以上の時、
+        digitalWrite(BRAKE_LANP_POINT, HIGH);
+    } else {
+        digitalWrite(BRAKE_LANP_POINT, LOW);
+    }
+    
+}
+
+//! 動作未確認
+bool IsHardBrake(byte brake, int av_max_val) {
+    float HardBrake_val = 0.25;
+    if (brake >= (av_max_val * HardBrake_val)) {
+        return true;
+    } else {
+        return false;
+    }
 }

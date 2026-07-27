@@ -32,6 +32,8 @@ void CAN_Setup() {
 
 void setup() {
     Serial.begin(115200);
+
+    BSE_Pin_Setup();
     CAN_Setup();
     
 }

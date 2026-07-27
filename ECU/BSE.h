@@ -15,11 +15,15 @@ extern uint8_t receivedCnt;
 extern const long errTimeLimit; // 100ms
 extern bool IsReceivedData;
 extern long lastReceiveTime;
+extern byte brake;
 
 extern const unsigned long now;
 
 void BSE_monitor();
 void receiveID100();
+void BSE_Pin_Setup();
 int brake_val();
+int brake_lanp();
+bool IsHardBrake();
 
 #endif
