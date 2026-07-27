@@ -16,14 +16,15 @@ extern const long errTimeLimit; // 100ms
 extern bool IsReceivedData;
 extern long lastReceiveTime;
 extern byte brake;
+extern int average_max_val;
 
 extern const unsigned long now;
 
 void BSE_monitor();
 void receiveID100();
 void BSE_Pin_Setup();
-int brake_val();
-int brake_lanp();
-bool IsHardBrake();
+int brake_val(int& average_max_val);
+void brake_lanp(byte brake);
+// bool IsHardBrake(byte brake, int average_max_val);
 
 #endif
