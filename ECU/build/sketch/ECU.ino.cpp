@@ -2,19 +2,21 @@
 #line 1 "C:\\Users\\kanek\\kanek_project\\frta\\program\\ECU\\ECU.ino"
 #include "ECU.h"
 #include "BSE.h"
-#include "C:\Users\kanek\kanek_project\frta\program\mcp_can_dfs.h"
-#include "C:\Users\kanek\kanek_project\frta\program\mcp_can.h"
+#include "C:\Users\kanek\kanek_project\frta\program\mcp_can\mcp_can_dfs.h"
+// #include "mcp_can_dfs.h" // これ使えねえ
+#include "C:\Users\kanek\kanek_project\frta\program\mcp_can\mcp_can.h"
+// #include "mcp_can.h" // これ使えねえ
 
 MCP_CAN CAN0(SPI_CS_PIN);
 
 bool CanUseMCP2515 = false;
-#line 9 "C:\\Users\\kanek\\kanek_project\\frta\\program\\ECU\\ECU.ino"
+#line 11 "C:\\Users\\kanek\\kanek_project\\frta\\program\\ECU\\ECU.ino"
 void CAN_Setup();
-#line 33 "C:\\Users\\kanek\\kanek_project\\frta\\program\\ECU\\ECU.ino"
+#line 35 "C:\\Users\\kanek\\kanek_project\\frta\\program\\ECU\\ECU.ino"
 void setup();
-#line 39 "C:\\Users\\kanek\\kanek_project\\frta\\program\\ECU\\ECU.ino"
+#line 43 "C:\\Users\\kanek\\kanek_project\\frta\\program\\ECU\\ECU.ino"
 void loop();
-#line 9 "C:\\Users\\kanek\\kanek_project\\frta\\program\\ECU\\ECU.ino"
+#line 11 "C:\\Users\\kanek\\kanek_project\\frta\\program\\ECU\\ECU.ino"
 void CAN_Setup() {
     if(CAN0.begin(MCP_ANY, CAN_500KBPS, MCP_8MHZ) == CAN_OK) {
         CanUseMCP2515 = true;
@@ -41,6 +43,8 @@ void CAN_Setup() {
 
 void setup() {
     Serial.begin(115200);
+
+    BSE_Pin_Setup();
     CAN_Setup();
     
 }

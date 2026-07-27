@@ -5,8 +5,8 @@
 // #include <cstdint>
 // #include <cstdint>
 #include "Arduino.h"
-#include "C:\Users\kanek\kanek_project\frta\program\mcp_can.h"
-#include "C:\Users\kanek\kanek_project\frta\program\mcp_can_dfs.h"
+// #include "C:\Users\kanek\kanek_project\frta\program\mcp_can\mcp_can.h"
+// #include "C:\Users\kanek\kanek_project\frta\program\mcp_can\mcp_can_dfs.h"
 #include "ECU.h"
 #include "BSE.h"
 
@@ -96,25 +96,17 @@ void receiveID100() { // ID100のメッセージを受け取る
     }
 }
 
-//! 動作未確認
-//TODO ハードブレーキの定義を決める
 int brake_val(int& average_max_val) {
-    int actual_val[10] = {}; // ここRAM節約できる
+    long sum = 0;
     int average_val = 0;
     int gain = 200;
     float scalling = 255.0 / 1023.0;
     for (int i=0;i<10;++i) {
-        actual_val[i] = analogRead(BRAKE_POINT);
-        average_val += actual_val[i];
+        sum += analogRead(BRAKE_POINT);
     }
 
     average_val /= gain;
     average_val *= scalling; // スケーリング
-
-    // 最大値計算
-    int max_val = 1023 * 10;
-    average_max_val = max_val /= gain;
-    average_max_val *= scalling;
 
     return average_val;
 }
@@ -134,9 +126,3 @@ void brake_lanp(byte brake) {
     }
     
 }
-
-// //! 動作未確認
-// bool IsHardBrake(byte brake, int average_max_val) { // ハードブレーキ判断
-//     float HardBrake_val = 0.25; //? 機械班と要相談
-//     return (brake >= (average_max_val * HardBrake_val));
-// }

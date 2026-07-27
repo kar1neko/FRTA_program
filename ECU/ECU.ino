@@ -1,7 +1,9 @@
 #include "ECU.h"
 #include "BSE.h"
-#include "C:\Users\kanek\kanek_project\frta\program\mcp_can_dfs.h"
-#include "C:\Users\kanek\kanek_project\frta\program\mcp_can.h"
+#include "C:\Users\kanek\kanek_project\frta\program\mcp_can\mcp_can_dfs.h"
+// #include "mcp_can_dfs.h" // これ使えねえ
+#include "C:\Users\kanek\kanek_project\frta\program\mcp_can\mcp_can.h"
+// #include "mcp_can.h" // これ使えねえ
 
 MCP_CAN CAN0(SPI_CS_PIN);
 

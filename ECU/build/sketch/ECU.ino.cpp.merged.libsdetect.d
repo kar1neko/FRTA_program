@@ -13,7 +13,7 @@ ECU.ino.cpp.o: \
  C:\Users\kanek\AppData\Local\Arduino15\packages\arduino\hardware\avr\1.8.8\variants\standard/pins_arduino.h \
  C:\Users\kanek\kanek_project\frta\program\ECU\build\sketch\ECU.h \
  C:\Users\kanek\AppData\Local\Arduino15\packages\arduino\hardware\avr\1.8.8\libraries\SPI\src/SPI.h \
- C:\Users\kanek\kanek_project\frta\program\mcp_can.h \
- C:\Users\kanek\kanek_project\frta\program\mcp_can_dfs.h \
+ C:\Users\kanek\kanek_project\frta\program\mcp_can\mcp_can.h \
+ C:\Users\kanek\kanek_project\frta\program\mcp_can\mcp_can_dfs.h \
  C:\Users\kanek\kanek_project\frta\program\ECU\build\sketch\BSE.h \
- C:\Users\kanek\kanek_project\frta\program\mcp_can_dfs.h
+ C:\Users\kanek\kanek_project\frta\program\mcp_can\mcp_can_dfs.h

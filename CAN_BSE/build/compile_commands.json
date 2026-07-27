@@ -55,37 +55,6 @@
    "-IC:\\Users\\kanek\\AppData\\Local\\Arduino15\\packages\\arduino\\hardware\\avr\\1.8.8\\cores\\arduino",
    "-IC:\\Users\\kanek\\AppData\\Local\\Arduino15\\packages\\arduino\\hardware\\avr\\1.8.8\\variants\\standard",
    "-IC:\\Users\\kanek\\AppData\\Local\\Arduino15\\packages\\arduino\\hardware\\avr\\1.8.8\\libraries\\SPI\\src",
-   "C:\\Users\\kanek\\kanek_project\\frta\\program\\CAN_BSE\\build\\sketch\\mcp_can.cpp",
-   "-o",
-   "C:\\Users\\kanek\\kanek_project\\frta\\program\\CAN_BSE\\build\\sketch\\mcp_can.cpp.o"
-  ],
-  "file": "C:\\Users\\kanek\\kanek_project\\frta\\program\\CAN_BSE\\build\\sketch\\mcp_can.cpp"
- },
- {
-  "directory": "C:\\Users\\kanek\\kanek_project\\frta\\program\\CAN_BSE",
-  "arguments": [
-   "C:\\Users\\kanek\\AppData\\Local\\Arduino15\\packages\\arduino\\tools\\avr-gcc\\7.3.0-atmel3.6.1-arduino7/bin/avr-g++",
-   "-c",
-   "-g",
-   "-Os",
-   "-w",
-   "-std=gnu++11",
-   "-fpermissive",
-   "-fno-exceptions",
-   "-ffunction-sections",
-   "-fdata-sections",
-   "-fno-threadsafe-statics",
-   "-Wno-error=narrowing",
-   "-MMD",
-   "-flto",
-   "-mmcu=atmega328p",
-   "-DF_CPU=16000000L",
-   "-DARDUINO=10607",
-   "-DARDUINO_AVR_UNO",
-   "-DARDUINO_ARCH_AVR",
-   "-IC:\\Users\\kanek\\AppData\\Local\\Arduino15\\packages\\arduino\\hardware\\avr\\1.8.8\\cores\\arduino",
-   "-IC:\\Users\\kanek\\AppData\\Local\\Arduino15\\packages\\arduino\\hardware\\avr\\1.8.8\\variants\\standard",
-   "-IC:\\Users\\kanek\\AppData\\Local\\Arduino15\\packages\\arduino\\hardware\\avr\\1.8.8\\libraries\\SPI\\src",
    "C:\\Users\\kanek\\AppData\\Local\\Arduino15\\packages\\arduino\\hardware\\avr\\1.8.8\\libraries\\SPI\\src\\SPI.cpp",
    "-o",
    "C:\\Users\\kanek\\kanek_project\\frta\\program\\CAN_BSE\\build\\libraries\\SPI\\SPI.cpp.o"
@@ -146,161 +115,11 @@
    "-DARDUINO_ARCH_AVR",
    "-IC:\\Users\\kanek\\AppData\\Local\\Arduino15\\packages\\arduino\\hardware\\avr\\1.8.8\\cores\\arduino",
    "-IC:\\Users\\kanek\\AppData\\Local\\Arduino15\\packages\\arduino\\hardware\\avr\\1.8.8\\variants\\standard",
-   "C:\\Users\\kanek\\AppData\\Local\\Arduino15\\packages\\arduino\\hardware\\avr\\1.8.8\\cores\\arduino\\PluggableUSB.cpp",
-   "-o",
-   "C:\\Users\\kanek\\kanek_project\\frta\\program\\CAN_BSE\\build\\core\\PluggableUSB.cpp.o"
-  ],
-  "file": "C:\\Users\\kanek\\AppData\\Local\\Arduino15\\packages\\arduino\\hardware\\avr\\1.8.8\\cores\\arduino\\PluggableUSB.cpp"
- },
- {
-  "directory": "C:\\Users\\kanek\\kanek_project\\frta\\program\\CAN_BSE",
-  "arguments": [
-   "C:\\Users\\kanek\\AppData\\Local\\Arduino15\\packages\\arduino\\tools\\avr-gcc\\7.3.0-atmel3.6.1-arduino7/bin/avr-g++",
-   "-c",
-   "-g",
-   "-Os",
-   "-w",
-   "-std=gnu++11",
-   "-fpermissive",
-   "-fno-exceptions",
-   "-ffunction-sections",
-   "-fdata-sections",
-   "-fno-threadsafe-statics",
-   "-Wno-error=narrowing",
-   "-MMD",
-   "-flto",
-   "-mmcu=atmega328p",
-   "-DF_CPU=16000000L",
-   "-DARDUINO=10607",
-   "-DARDUINO_AVR_UNO",
-   "-DARDUINO_ARCH_AVR",
-   "-IC:\\Users\\kanek\\AppData\\Local\\Arduino15\\packages\\arduino\\hardware\\avr\\1.8.8\\cores\\arduino",
-   "-IC:\\Users\\kanek\\AppData\\Local\\Arduino15\\packages\\arduino\\hardware\\avr\\1.8.8\\variants\\standard",
-   "C:\\Users\\kanek\\AppData\\Local\\Arduino15\\packages\\arduino\\hardware\\avr\\1.8.8\\cores\\arduino\\HardwareSerial1.cpp",
-   "-o",
-   "C:\\Users\\kanek\\kanek_project\\frta\\program\\CAN_BSE\\build\\core\\HardwareSerial1.cpp.o"
-  ],
-  "file": "C:\\Users\\kanek\\AppData\\Local\\Arduino15\\packages\\arduino\\hardware\\avr\\1.8.8\\cores\\arduino\\HardwareSerial1.cpp"
- },
- {
-  "directory": "C:\\Users\\kanek\\kanek_project\\frta\\program\\CAN_BSE",
-  "arguments": [
-   "C:\\Users\\kanek\\AppData\\Local\\Arduino15\\packages\\arduino\\tools\\avr-gcc\\7.3.0-atmel3.6.1-arduino7/bin/avr-g++",
-   "-c",
-   "-g",
-   "-Os",
-   "-w",
-   "-std=gnu++11",
-   "-fpermissive",
-   "-fno-exceptions",
-   "-ffunction-sections",
-   "-fdata-sections",
-   "-fno-threadsafe-statics",
-   "-Wno-error=narrowing",
-   "-MMD",
-   "-flto",
-   "-mmcu=atmega328p",
-   "-DF_CPU=16000000L",
-   "-DARDUINO=10607",
-   "-DARDUINO_AVR_UNO",
-   "-DARDUINO_ARCH_AVR",
-   "-IC:\\Users\\kanek\\AppData\\Local\\Arduino15\\packages\\arduino\\hardware\\avr\\1.8.8\\cores\\arduino",
-   "-IC:\\Users\\kanek\\AppData\\Local\\Arduino15\\packages\\arduino\\hardware\\avr\\1.8.8\\variants\\standard",
    "C:\\Users\\kanek\\AppData\\Local\\Arduino15\\packages\\arduino\\hardware\\avr\\1.8.8\\cores\\arduino\\HardwareSerial.cpp",
    "-o",
    "C:\\Users\\kanek\\kanek_project\\frta\\program\\CAN_BSE\\build\\core\\HardwareSerial.cpp.o"
   ],
   "file": "C:\\Users\\kanek\\AppData\\Local\\Arduino15\\packages\\arduino\\hardware\\avr\\1.8.8\\cores\\arduino\\HardwareSerial.cpp"
- },
- {
-  "directory": "C:\\Users\\kanek\\kanek_project\\frta\\program\\CAN_BSE",
-  "arguments": [
-   "C:\\Users\\kanek\\AppData\\Local\\Arduino15\\packages\\arduino\\tools\\avr-gcc\\7.3.0-atmel3.6.1-arduino7/bin/avr-g++",
-   "-c",
-   "-g",
-   "-Os",
-   "-w",
-   "-std=gnu++11",
-   "-fpermissive",
-   "-fno-exceptions",
-   "-ffunction-sections",
-   "-fdata-sections",
-   "-fno-threadsafe-statics",
-   "-Wno-error=narrowing",
-   "-MMD",
-   "-flto",
-   "-mmcu=atmega328p",
-   "-DF_CPU=16000000L",
-   "-DARDUINO=10607",
-   "-DARDUINO_AVR_UNO",
-   "-DARDUINO_ARCH_AVR",
-   "-IC:\\Users\\kanek\\AppData\\Local\\Arduino15\\packages\\arduino\\hardware\\avr\\1.8.8\\cores\\arduino",
-   "-IC:\\Users\\kanek\\AppData\\Local\\Arduino15\\packages\\arduino\\hardware\\avr\\1.8.8\\variants\\standard",
-   "C:\\Users\\kanek\\AppData\\Local\\Arduino15\\packages\\arduino\\hardware\\avr\\1.8.8\\cores\\arduino\\HardwareSerial3.cpp",
-   "-o",
-   "C:\\Users\\kanek\\kanek_project\\frta\\program\\CAN_BSE\\build\\core\\HardwareSerial3.cpp.o"
-  ],
-  "file": "C:\\Users\\kanek\\AppData\\Local\\Arduino15\\packages\\arduino\\hardware\\avr\\1.8.8\\cores\\arduino\\HardwareSerial3.cpp"
- },
- {
-  "directory": "C:\\Users\\kanek\\kanek_project\\frta\\program\\CAN_BSE",
-  "arguments": [
-   "C:\\Users\\kanek\\AppData\\Local\\Arduino15\\packages\\arduino\\tools\\avr-gcc\\7.3.0-atmel3.6.1-arduino7/bin/avr-g++",
-   "-c",
-   "-g",
-   "-Os",
-   "-w",
-   "-std=gnu++11",
-   "-fpermissive",
-   "-fno-exceptions",
-   "-ffunction-sections",
-   "-fdata-sections",
-   "-fno-threadsafe-statics",
-   "-Wno-error=narrowing",
-   "-MMD",
-   "-flto",
-   "-mmcu=atmega328p",
-   "-DF_CPU=16000000L",
-   "-DARDUINO=10607",
-   "-DARDUINO_AVR_UNO",
-   "-DARDUINO_ARCH_AVR",
-   "-IC:\\Users\\kanek\\AppData\\Local\\Arduino15\\packages\\arduino\\hardware\\avr\\1.8.8\\cores\\arduino",
-   "-IC:\\Users\\kanek\\AppData\\Local\\Arduino15\\packages\\arduino\\hardware\\avr\\1.8.8\\variants\\standard",
-   "C:\\Users\\kanek\\AppData\\Local\\Arduino15\\packages\\arduino\\hardware\\avr\\1.8.8\\cores\\arduino\\Print.cpp",
-   "-o",
-   "C:\\Users\\kanek\\kanek_project\\frta\\program\\CAN_BSE\\build\\core\\Print.cpp.o"
-  ],
-  "file": "C:\\Users\\kanek\\AppData\\Local\\Arduino15\\packages\\arduino\\hardware\\avr\\1.8.8\\cores\\arduino\\Print.cpp"
- },
- {
-  "directory": "C:\\Users\\kanek\\kanek_project\\frta\\program\\CAN_BSE",
-  "arguments": [
-   "C:\\Users\\kanek\\AppData\\Local\\Arduino15\\packages\\arduino\\tools\\avr-gcc\\7.3.0-atmel3.6.1-arduino7/bin/avr-g++",
-   "-c",
-   "-g",
-   "-Os",
-   "-w",
-   "-std=gnu++11",
-   "-fpermissive",
-   "-fno-exceptions",
-   "-ffunction-sections",
-   "-fdata-sections",
-   "-fno-threadsafe-statics",
-   "-Wno-error=narrowing",
-   "-MMD",
-   "-flto",
-   "-mmcu=atmega328p",
-   "-DF_CPU=16000000L",
-   "-DARDUINO=10607",
-   "-DARDUINO_AVR_UNO",
-   "-DARDUINO_ARCH_AVR",
-   "-IC:\\Users\\kanek\\AppData\\Local\\Arduino15\\packages\\arduino\\hardware\\avr\\1.8.8\\cores\\arduino",
-   "-IC:\\Users\\kanek\\AppData\\Local\\Arduino15\\packages\\arduino\\hardware\\avr\\1.8.8\\variants\\standard",
-   "C:\\Users\\kanek\\AppData\\Local\\Arduino15\\packages\\arduino\\hardware\\avr\\1.8.8\\cores\\arduino\\HardwareSerial2.cpp",
-   "-o",
-   "C:\\Users\\kanek\\kanek_project\\frta\\program\\CAN_BSE\\build\\core\\HardwareSerial2.cpp.o"
-  ],
-  "file": "C:\\Users\\kanek\\AppData\\Local\\Arduino15\\packages\\arduino\\hardware\\avr\\1.8.8\\cores\\arduino\\HardwareSerial2.cpp"
  },
  {
   "directory": "C:\\Users\\kanek\\kanek_project\\frta\\program\\CAN_BSE",
@@ -356,11 +175,11 @@
    "-DARDUINO_ARCH_AVR",
    "-IC:\\Users\\kanek\\AppData\\Local\\Arduino15\\packages\\arduino\\hardware\\avr\\1.8.8\\cores\\arduino",
    "-IC:\\Users\\kanek\\AppData\\Local\\Arduino15\\packages\\arduino\\hardware\\avr\\1.8.8\\variants\\standard",
-   "C:\\Users\\kanek\\AppData\\Local\\Arduino15\\packages\\arduino\\hardware\\avr\\1.8.8\\cores\\arduino\\IPAddress.cpp",
+   "C:\\Users\\kanek\\AppData\\Local\\Arduino15\\packages\\arduino\\hardware\\avr\\1.8.8\\cores\\arduino\\Stream.cpp",
    "-o",
-   "C:\\Users\\kanek\\kanek_project\\frta\\program\\CAN_BSE\\build\\core\\IPAddress.cpp.o"
+   "C:\\Users\\kanek\\kanek_project\\frta\\program\\CAN_BSE\\build\\core\\Stream.cpp.o"
   ],
-  "file": "C:\\Users\\kanek\\AppData\\Local\\Arduino15\\packages\\arduino\\hardware\\avr\\1.8.8\\cores\\arduino\\IPAddress.cpp"
+  "file": "C:\\Users\\kanek\\AppData\\Local\\Arduino15\\packages\\arduino\\hardware\\avr\\1.8.8\\cores\\arduino\\Stream.cpp"
  },
  {
   "directory": "C:\\Users\\kanek\\kanek_project\\frta\\program\\CAN_BSE",
@@ -386,11 +205,41 @@
    "-DARDUINO_ARCH_AVR",
    "-IC:\\Users\\kanek\\AppData\\Local\\Arduino15\\packages\\arduino\\hardware\\avr\\1.8.8\\cores\\arduino",
    "-IC:\\Users\\kanek\\AppData\\Local\\Arduino15\\packages\\arduino\\hardware\\avr\\1.8.8\\variants\\standard",
-   "C:\\Users\\kanek\\AppData\\Local\\Arduino15\\packages\\arduino\\hardware\\avr\\1.8.8\\cores\\arduino\\Stream.cpp",
+   "C:\\Users\\kanek\\AppData\\Local\\Arduino15\\packages\\arduino\\hardware\\avr\\1.8.8\\cores\\arduino\\HardwareSerial3.cpp",
    "-o",
-   "C:\\Users\\kanek\\kanek_project\\frta\\program\\CAN_BSE\\build\\core\\Stream.cpp.o"
+   "C:\\Users\\kanek\\kanek_project\\frta\\program\\CAN_BSE\\build\\core\\HardwareSerial3.cpp.o"
   ],
-  "file": "C:\\Users\\kanek\\AppData\\Local\\Arduino15\\packages\\arduino\\hardware\\avr\\1.8.8\\cores\\arduino\\Stream.cpp"
+  "file": "C:\\Users\\kanek\\AppData\\Local\\Arduino15\\packages\\arduino\\hardware\\avr\\1.8.8\\cores\\arduino\\HardwareSerial3.cpp"
+ },
+ {
+  "directory": "C:\\Users\\kanek\\kanek_project\\frta\\program\\CAN_BSE",
+  "arguments": [
+   "C:\\Users\\kanek\\AppData\\Local\\Arduino15\\packages\\arduino\\tools\\avr-gcc\\7.3.0-atmel3.6.1-arduino7/bin/avr-g++",
+   "-c",
+   "-g",
+   "-Os",
+   "-w",
+   "-std=gnu++11",
+   "-fpermissive",
+   "-fno-exceptions",
+   "-ffunction-sections",
+   "-fdata-sections",
+   "-fno-threadsafe-statics",
+   "-Wno-error=narrowing",
+   "-MMD",
+   "-flto",
+   "-mmcu=atmega328p",
+   "-DF_CPU=16000000L",
+   "-DARDUINO=10607",
+   "-DARDUINO_AVR_UNO",
+   "-DARDUINO_ARCH_AVR",
+   "-IC:\\Users\\kanek\\AppData\\Local\\Arduino15\\packages\\arduino\\hardware\\avr\\1.8.8\\cores\\arduino",
+   "-IC:\\Users\\kanek\\AppData\\Local\\Arduino15\\packages\\arduino\\hardware\\avr\\1.8.8\\variants\\standard",
+   "C:\\Users\\kanek\\AppData\\Local\\Arduino15\\packages\\arduino\\hardware\\avr\\1.8.8\\cores\\arduino\\PluggableUSB.cpp",
+   "-o",
+   "C:\\Users\\kanek\\kanek_project\\frta\\program\\CAN_BSE\\build\\core\\PluggableUSB.cpp.o"
+  ],
+  "file": "C:\\Users\\kanek\\AppData\\Local\\Arduino15\\packages\\arduino\\hardware\\avr\\1.8.8\\cores\\arduino\\PluggableUSB.cpp"
  },
  {
   "directory": "C:\\Users\\kanek\\kanek_project\\frta\\program\\CAN_BSE",
@@ -446,11 +295,11 @@
    "-DARDUINO_ARCH_AVR",
    "-IC:\\Users\\kanek\\AppData\\Local\\Arduino15\\packages\\arduino\\hardware\\avr\\1.8.8\\cores\\arduino",
    "-IC:\\Users\\kanek\\AppData\\Local\\Arduino15\\packages\\arduino\\hardware\\avr\\1.8.8\\variants\\standard",
-   "C:\\Users\\kanek\\AppData\\Local\\Arduino15\\packages\\arduino\\hardware\\avr\\1.8.8\\cores\\arduino\\USBCore.cpp",
+   "C:\\Users\\kanek\\AppData\\Local\\Arduino15\\packages\\arduino\\hardware\\avr\\1.8.8\\cores\\arduino\\HardwareSerial1.cpp",
    "-o",
-   "C:\\Users\\kanek\\kanek_project\\frta\\program\\CAN_BSE\\build\\core\\USBCore.cpp.o"
+   "C:\\Users\\kanek\\kanek_project\\frta\\program\\CAN_BSE\\build\\core\\HardwareSerial1.cpp.o"
   ],
-  "file": "C:\\Users\\kanek\\AppData\\Local\\Arduino15\\packages\\arduino\\hardware\\avr\\1.8.8\\cores\\arduino\\USBCore.cpp"
+  "file": "C:\\Users\\kanek\\AppData\\Local\\Arduino15\\packages\\arduino\\hardware\\avr\\1.8.8\\cores\\arduino\\HardwareSerial1.cpp"
  },
  {
   "directory": "C:\\Users\\kanek\\kanek_project\\frta\\program\\CAN_BSE",
@@ -478,6 +327,153 @@
    "C:\\Users\\kanek\\kanek_project\\frta\\program\\CAN_BSE\\build\\core\\WInterrupts.c.o"
   ],
   "file": "C:\\Users\\kanek\\AppData\\Local\\Arduino15\\packages\\arduino\\hardware\\avr\\1.8.8\\cores\\arduino\\WInterrupts.c"
+ },
+ {
+  "directory": "C:\\Users\\kanek\\kanek_project\\frta\\program\\CAN_BSE",
+  "arguments": [
+   "C:\\Users\\kanek\\AppData\\Local\\Arduino15\\packages\\arduino\\tools\\avr-gcc\\7.3.0-atmel3.6.1-arduino7/bin/avr-g++",
+   "-c",
+   "-g",
+   "-Os",
+   "-w",
+   "-std=gnu++11",
+   "-fpermissive",
+   "-fno-exceptions",
+   "-ffunction-sections",
+   "-fdata-sections",
+   "-fno-threadsafe-statics",
+   "-Wno-error=narrowing",
+   "-MMD",
+   "-flto",
+   "-mmcu=atmega328p",
+   "-DF_CPU=16000000L",
+   "-DARDUINO=10607",
+   "-DARDUINO_AVR_UNO",
+   "-DARDUINO_ARCH_AVR",
+   "-IC:\\Users\\kanek\\AppData\\Local\\Arduino15\\packages\\arduino\\hardware\\avr\\1.8.8\\cores\\arduino",
+   "-IC:\\Users\\kanek\\AppData\\Local\\Arduino15\\packages\\arduino\\hardware\\avr\\1.8.8\\variants\\standard",
+   "C:\\Users\\kanek\\AppData\\Local\\Arduino15\\packages\\arduino\\hardware\\avr\\1.8.8\\cores\\arduino\\IPAddress.cpp",
+   "-o",
+   "C:\\Users\\kanek\\kanek_project\\frta\\program\\CAN_BSE\\build\\core\\IPAddress.cpp.o"
+  ],
+  "file": "C:\\Users\\kanek\\AppData\\Local\\Arduino15\\packages\\arduino\\hardware\\avr\\1.8.8\\cores\\arduino\\IPAddress.cpp"
+ },
+ {
+  "directory": "C:\\Users\\kanek\\kanek_project\\frta\\program\\CAN_BSE",
+  "arguments": [
+   "C:\\Users\\kanek\\AppData\\Local\\Arduino15\\packages\\arduino\\tools\\avr-gcc\\7.3.0-atmel3.6.1-arduino7/bin/avr-g++",
+   "-c",
+   "-g",
+   "-Os",
+   "-w",
+   "-std=gnu++11",
+   "-fpermissive",
+   "-fno-exceptions",
+   "-ffunction-sections",
+   "-fdata-sections",
+   "-fno-threadsafe-statics",
+   "-Wno-error=narrowing",
+   "-MMD",
+   "-flto",
+   "-mmcu=atmega328p",
+   "-DF_CPU=16000000L",
+   "-DARDUINO=10607",
+   "-DARDUINO_AVR_UNO",
+   "-DARDUINO_ARCH_AVR",
+   "-IC:\\Users\\kanek\\AppData\\Local\\Arduino15\\packages\\arduino\\hardware\\avr\\1.8.8\\cores\\arduino",
+   "-IC:\\Users\\kanek\\AppData\\Local\\Arduino15\\packages\\arduino\\hardware\\avr\\1.8.8\\variants\\standard",
+   "C:\\Users\\kanek\\AppData\\Local\\Arduino15\\packages\\arduino\\hardware\\avr\\1.8.8\\cores\\arduino\\HardwareSerial2.cpp",
+   "-o",
+   "C:\\Users\\kanek\\kanek_project\\frta\\program\\CAN_BSE\\build\\core\\HardwareSerial2.cpp.o"
+  ],
+  "file": "C:\\Users\\kanek\\AppData\\Local\\Arduino15\\packages\\arduino\\hardware\\avr\\1.8.8\\cores\\arduino\\HardwareSerial2.cpp"
+ },
+ {
+  "directory": "C:\\Users\\kanek\\kanek_project\\frta\\program\\CAN_BSE",
+  "arguments": [
+   "C:\\Users\\kanek\\AppData\\Local\\Arduino15\\packages\\arduino\\tools\\avr-gcc\\7.3.0-atmel3.6.1-arduino7/bin/avr-g++",
+   "-c",
+   "-g",
+   "-Os",
+   "-w",
+   "-std=gnu++11",
+   "-fpermissive",
+   "-fno-exceptions",
+   "-ffunction-sections",
+   "-fdata-sections",
+   "-fno-threadsafe-statics",
+   "-Wno-error=narrowing",
+   "-MMD",
+   "-flto",
+   "-mmcu=atmega328p",
+   "-DF_CPU=16000000L",
+   "-DARDUINO=10607",
+   "-DARDUINO_AVR_UNO",
+   "-DARDUINO_ARCH_AVR",
+   "-IC:\\Users\\kanek\\AppData\\Local\\Arduino15\\packages\\arduino\\hardware\\avr\\1.8.8\\cores\\arduino",
+   "-IC:\\Users\\kanek\\AppData\\Local\\Arduino15\\packages\\arduino\\hardware\\avr\\1.8.8\\variants\\standard",
+   "C:\\Users\\kanek\\AppData\\Local\\Arduino15\\packages\\arduino\\hardware\\avr\\1.8.8\\cores\\arduino\\Print.cpp",
+   "-o",
+   "C:\\Users\\kanek\\kanek_project\\frta\\program\\CAN_BSE\\build\\core\\Print.cpp.o"
+  ],
+  "file": "C:\\Users\\kanek\\AppData\\Local\\Arduino15\\packages\\arduino\\hardware\\avr\\1.8.8\\cores\\arduino\\Print.cpp"
+ },
+ {
+  "directory": "C:\\Users\\kanek\\kanek_project\\frta\\program\\CAN_BSE",
+  "arguments": [
+   "C:\\Users\\kanek\\AppData\\Local\\Arduino15\\packages\\arduino\\tools\\avr-gcc\\7.3.0-atmel3.6.1-arduino7/bin/avr-g++",
+   "-c",
+   "-g",
+   "-Os",
+   "-w",
+   "-std=gnu++11",
+   "-fpermissive",
+   "-fno-exceptions",
+   "-ffunction-sections",
+   "-fdata-sections",
+   "-fno-threadsafe-statics",
+   "-Wno-error=narrowing",
+   "-MMD",
+   "-flto",
+   "-mmcu=atmega328p",
+   "-DF_CPU=16000000L",
+   "-DARDUINO=10607",
+   "-DARDUINO_AVR_UNO",
+   "-DARDUINO_ARCH_AVR",
+   "-IC:\\Users\\kanek\\AppData\\Local\\Arduino15\\packages\\arduino\\hardware\\avr\\1.8.8\\cores\\arduino",
+   "-IC:\\Users\\kanek\\AppData\\Local\\Arduino15\\packages\\arduino\\hardware\\avr\\1.8.8\\variants\\standard",
+   "C:\\Users\\kanek\\AppData\\Local\\Arduino15\\packages\\arduino\\hardware\\avr\\1.8.8\\cores\\arduino\\USBCore.cpp",
+   "-o",
+   "C:\\Users\\kanek\\kanek_project\\frta\\program\\CAN_BSE\\build\\core\\USBCore.cpp.o"
+  ],
+  "file": "C:\\Users\\kanek\\AppData\\Local\\Arduino15\\packages\\arduino\\hardware\\avr\\1.8.8\\cores\\arduino\\USBCore.cpp"
+ },
+ {
+  "directory": "C:\\Users\\kanek\\kanek_project\\frta\\program\\CAN_BSE",
+  "arguments": [
+   "C:\\Users\\kanek\\AppData\\Local\\Arduino15\\packages\\arduino\\tools\\avr-gcc\\7.3.0-atmel3.6.1-arduino7/bin/avr-gcc",
+   "-c",
+   "-g",
+   "-Os",
+   "-w",
+   "-std=gnu11",
+   "-ffunction-sections",
+   "-fdata-sections",
+   "-MMD",
+   "-flto",
+   "-fno-fat-lto-objects",
+   "-mmcu=atmega328p",
+   "-DF_CPU=16000000L",
+   "-DARDUINO=10607",
+   "-DARDUINO_AVR_UNO",
+   "-DARDUINO_ARCH_AVR",
+   "-IC:\\Users\\kanek\\AppData\\Local\\Arduino15\\packages\\arduino\\hardware\\avr\\1.8.8\\cores\\arduino",
+   "-IC:\\Users\\kanek\\AppData\\Local\\Arduino15\\packages\\arduino\\hardware\\avr\\1.8.8\\variants\\standard",
+   "C:\\Users\\kanek\\AppData\\Local\\Arduino15\\packages\\arduino\\hardware\\avr\\1.8.8\\cores\\arduino\\hooks.c",
+   "-o",
+   "C:\\Users\\kanek\\kanek_project\\frta\\program\\CAN_BSE\\build\\core\\hooks.c.o"
+  ],
+  "file": "C:\\Users\\kanek\\AppData\\Local\\Arduino15\\packages\\arduino\\hardware\\avr\\1.8.8\\cores\\arduino\\hooks.c"
  },
  {
   "directory": "C:\\Users\\kanek\\kanek_project\\frta\\program\\CAN_BSE",
@@ -568,33 +564,6 @@
    "C:\\Users\\kanek\\kanek_project\\frta\\program\\CAN_BSE\\build\\core\\abi.cpp.o"
   ],
   "file": "C:\\Users\\kanek\\AppData\\Local\\Arduino15\\packages\\arduino\\hardware\\avr\\1.8.8\\cores\\arduino\\abi.cpp"
- },
- {
-  "directory": "C:\\Users\\kanek\\kanek_project\\frta\\program\\CAN_BSE",
-  "arguments": [
-   "C:\\Users\\kanek\\AppData\\Local\\Arduino15\\packages\\arduino\\tools\\avr-gcc\\7.3.0-atmel3.6.1-arduino7/bin/avr-gcc",
-   "-c",
-   "-g",
-   "-Os",
-   "-w",
-   "-std=gnu11",
-   "-ffunction-sections",
-   "-fdata-sections",
-   "-MMD",
-   "-flto",
-   "-fno-fat-lto-objects",
-   "-mmcu=atmega328p",
-   "-DF_CPU=16000000L",
-   "-DARDUINO=10607",
-   "-DARDUINO_AVR_UNO",
-   "-DARDUINO_ARCH_AVR",
-   "-IC:\\Users\\kanek\\AppData\\Local\\Arduino15\\packages\\arduino\\hardware\\avr\\1.8.8\\cores\\arduino",
-   "-IC:\\Users\\kanek\\AppData\\Local\\Arduino15\\packages\\arduino\\hardware\\avr\\1.8.8\\variants\\standard",
-   "C:\\Users\\kanek\\AppData\\Local\\Arduino15\\packages\\arduino\\hardware\\avr\\1.8.8\\cores\\arduino\\hooks.c",
-   "-o",
-   "C:\\Users\\kanek\\kanek_project\\frta\\program\\CAN_BSE\\build\\core\\hooks.c.o"
-  ],
-  "file": "C:\\Users\\kanek\\AppData\\Local\\Arduino15\\packages\\arduino\\hardware\\avr\\1.8.8\\cores\\arduino\\hooks.c"
  },
  {
   "directory": "C:\\Users\\kanek\\kanek_project\\frta\\program\\CAN_BSE",
@@ -704,11 +673,11 @@
    "-DARDUINO_ARCH_AVR",
    "-IC:\\Users\\kanek\\AppData\\Local\\Arduino15\\packages\\arduino\\hardware\\avr\\1.8.8\\cores\\arduino",
    "-IC:\\Users\\kanek\\AppData\\Local\\Arduino15\\packages\\arduino\\hardware\\avr\\1.8.8\\variants\\standard",
-   "C:\\Users\\kanek\\AppData\\Local\\Arduino15\\packages\\arduino\\hardware\\avr\\1.8.8\\cores\\arduino\\wiring_analog.c",
+   "C:\\Users\\kanek\\AppData\\Local\\Arduino15\\packages\\arduino\\hardware\\avr\\1.8.8\\cores\\arduino\\wiring_shift.c",
    "-o",
-   "C:\\Users\\kanek\\kanek_project\\frta\\program\\CAN_BSE\\build\\core\\wiring_analog.c.o"
+   "C:\\Users\\kanek\\kanek_project\\frta\\program\\CAN_BSE\\build\\core\\wiring_shift.c.o"
   ],
-  "file": "C:\\Users\\kanek\\AppData\\Local\\Arduino15\\packages\\arduino\\hardware\\avr\\1.8.8\\cores\\arduino\\wiring_analog.c"
+  "file": "C:\\Users\\kanek\\AppData\\Local\\Arduino15\\packages\\arduino\\hardware\\avr\\1.8.8\\cores\\arduino\\wiring_shift.c"
  },
  {
   "directory": "C:\\Users\\kanek\\kanek_project\\frta\\program\\CAN_BSE",
@@ -731,11 +700,11 @@
    "-DARDUINO_ARCH_AVR",
    "-IC:\\Users\\kanek\\AppData\\Local\\Arduino15\\packages\\arduino\\hardware\\avr\\1.8.8\\cores\\arduino",
    "-IC:\\Users\\kanek\\AppData\\Local\\Arduino15\\packages\\arduino\\hardware\\avr\\1.8.8\\variants\\standard",
-   "C:\\Users\\kanek\\AppData\\Local\\Arduino15\\packages\\arduino\\hardware\\avr\\1.8.8\\cores\\arduino\\wiring_digital.c",
+   "C:\\Users\\kanek\\AppData\\Local\\Arduino15\\packages\\arduino\\hardware\\avr\\1.8.8\\cores\\arduino\\wiring_analog.c",
    "-o",
-   "C:\\Users\\kanek\\kanek_project\\frta\\program\\CAN_BSE\\build\\core\\wiring_digital.c.o"
+   "C:\\Users\\kanek\\kanek_project\\frta\\program\\CAN_BSE\\build\\core\\wiring_analog.c.o"
   ],
-  "file": "C:\\Users\\kanek\\AppData\\Local\\Arduino15\\packages\\arduino\\hardware\\avr\\1.8.8\\cores\\arduino\\wiring_digital.c"
+  "file": "C:\\Users\\kanek\\AppData\\Local\\Arduino15\\packages\\arduino\\hardware\\avr\\1.8.8\\cores\\arduino\\wiring_analog.c"
  },
  {
   "directory": "C:\\Users\\kanek\\kanek_project\\frta\\program\\CAN_BSE",
@@ -808,10 +777,10 @@
    "-DARDUINO_ARCH_AVR",
    "-IC:\\Users\\kanek\\AppData\\Local\\Arduino15\\packages\\arduino\\hardware\\avr\\1.8.8\\cores\\arduino",
    "-IC:\\Users\\kanek\\AppData\\Local\\Arduino15\\packages\\arduino\\hardware\\avr\\1.8.8\\variants\\standard",
-   "C:\\Users\\kanek\\AppData\\Local\\Arduino15\\packages\\arduino\\hardware\\avr\\1.8.8\\cores\\arduino\\wiring_shift.c",
+   "C:\\Users\\kanek\\AppData\\Local\\Arduino15\\packages\\arduino\\hardware\\avr\\1.8.8\\cores\\arduino\\wiring_digital.c",
    "-o",
-   "C:\\Users\\kanek\\kanek_project\\frta\\program\\CAN_BSE\\build\\core\\wiring_shift.c.o"
+   "C:\\Users\\kanek\\kanek_project\\frta\\program\\CAN_BSE\\build\\core\\wiring_digital.c.o"
   ],
-  "file": "C:\\Users\\kanek\\AppData\\Local\\Arduino15\\packages\\arduino\\hardware\\avr\\1.8.8\\cores\\arduino\\wiring_shift.c"
+  "file": "C:\\Users\\kanek\\AppData\\Local\\Arduino15\\packages\\arduino\\hardware\\avr\\1.8.8\\cores\\arduino\\wiring_digital.c"
  }
 ]
