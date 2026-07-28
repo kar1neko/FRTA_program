@@ -24,7 +24,7 @@ MCP_CAN_lib-master : https://github.com/coryjfowler/MCP_CAN_lib
 *************************************************/
 // ライブラリヘッダのインクルード
 #include <SPI.h>
-#include "C:\Users\kanek\kanek_project\frta\program\mcp_can.h"
+#include <mcp_can.h>
 #include "NI_CU.h"
 
 

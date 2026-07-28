@@ -1,5 +1,7 @@
-CAN_MotorControl_Demo.ino.cpp.o: \
- C:\Users\kanek\kanek_project\frta\program\motor\CAN_MotorControl_Demo\build\sketch\CAN_MotorControl_Demo.ino.cpp.merged \
+mcp_can.o: \
+ C:\Users\kanek\kanek_project\Arduino2.x\libraries\mcp_can\mcp_can.cpp \
+ C:\Users\kanek\kanek_project\Arduino2.x\libraries\mcp_can\mcp_can.h \
+ C:\Users\kanek\kanek_project\Arduino2.x\libraries\mcp_can\mcp_can_dfs.h \
  C:\Users\kanek\AppData\Local\Arduino15\packages\arduino\hardware\avr\1.8.8\cores\arduino/Arduino.h \
  C:\Users\kanek\AppData\Local\Arduino15\packages\arduino\hardware\avr\1.8.8\cores\arduino/binary.h \
  C:\Users\kanek\AppData\Local\Arduino15\packages\arduino\hardware\avr\1.8.8\cores\arduino/WCharacter.h \
@@ -11,7 +13,4 @@ CAN_MotorControl_Demo.ino.cpp.o: \
  C:\Users\kanek\AppData\Local\Arduino15\packages\arduino\hardware\avr\1.8.8\cores\arduino/USBAPI.h \
  C:\Users\kanek\AppData\Local\Arduino15\packages\arduino\hardware\avr\1.8.8\cores\arduino/Arduino.h \
  C:\Users\kanek\AppData\Local\Arduino15\packages\arduino\hardware\avr\1.8.8\variants\standard/pins_arduino.h \
- C:\Users\kanek\AppData\Local\Arduino15\packages\arduino\hardware\avr\1.8.8\libraries\SPI\src/SPI.h \
- C:\Users\kanek\kanek_project\Arduino2.x\libraries\mcp_can/mcp_can.h \
- C:\Users\kanek\kanek_project\Arduino2.x\libraries\mcp_can/mcp_can_dfs.h \
- C:\Users\kanek\kanek_project\frta\program\motor\CAN_MotorControl_Demo\build\sketch\NI_CU.h
+ C:\Users\kanek\AppData\Local\Arduino15\packages\arduino\hardware\avr\1.8.8\libraries\SPI\src/SPI.h

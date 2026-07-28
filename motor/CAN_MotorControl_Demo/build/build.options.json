@@ -4,6 +4,6 @@
   "customBuildProperties": "",
   "fqbn": "arduino:avr:uno",
   "hardwareFolders": "C:\\Users\\kanek\\AppData\\Local\\Arduino15\\packages\\arduino\\hardware\\avr\\1.8.8,C:\\Users\\kanek\\AppData\\Local\\Arduino15\\packages\\arduino\\hardware\\avr\\1.8.8",
-  "otherLibrariesFolders": "C:\\Users\\kanek\\OneDrive\\ドキュメント\\Arduino\\libraries",
+  "otherLibrariesFolders": "C:\\Users\\kanek\\kanek_project\\Arduino2.x\\libraries",
   "sketchLocation": "C:\\Users\\kanek\\kanek_project\\frta\\program\\motor\\CAN_MotorControl_Demo"
 }
