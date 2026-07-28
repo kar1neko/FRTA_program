@@ -1,5 +1,5 @@
 #include <SPI.h>
-#include "C:\Users\kanek\kanek_project\frta\program\mcp_can.h"
+#include <mcp_can.h>
 
 #define SPI_CS_PIN 10
 #define CAN0_INT 2

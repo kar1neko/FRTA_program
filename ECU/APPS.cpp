@@ -1,7 +1,7 @@
 #include "APPS.h"
 #include "Arduino.h"
 #include <SPI.h>
-// まじもうえぐいよ...なんでプログラムワンオペなんだよ
+
 uint8_t 
 
 constexpr uint8_t ACCEL_SENSOR_1 = 5;

@@ -1,1 +1,4 @@
 CAN_BSE/.vscode
+build/
+.clangd
+motor/CAN_MotorControl_Demo/log
