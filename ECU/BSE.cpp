@@ -8,8 +8,8 @@
 unsigned long rxID;
 unsigned char rxlen = 0;
 unsigned char txlen = 0;
-unsigned char rxBuf[8];
-unsigned char txBuf[8];
+static unsigned char rxBuf[8];
+static unsigned char txBuf[8];
 uint8_t ExpecteCnt = 0;
 uint8_t receivedCnt = 0;
 // long errTimePoint = 0;
@@ -17,10 +17,11 @@ const long errTimeLimit = 100; // 100ms
 const unsigned long now = millis();
 bool IsReceivedData = false;
 long lastReceiveTime = 0;
-int average_max_val = 0;
 
 constexpr uint8_t BRAKE_POINT = 5; // ブレーキペダル入力ピン
 constexpr uint8_t BRAKE_LANP_POINT = 7; // ブレーキランプ出力ピン
+
+extern MCP_CAN CAN0;
 
 enum BSE_Status {
     BSE_SYNC, // 同期
@@ -37,12 +38,12 @@ void BSE_monitor() {
     // Serial.print(" expect: ");Serial.println(ExpecteCnt);
     switch (bseState) {
         case BSE_SYNC: // 初回同期
-        if(IsReceivedData == true) { // IsreceivedData == trueになるまでbseState=BSE_SYNCで保持
-            ExpecteCnt = (receivedCnt +1) % 10;
-            bseState = BSE_NORMAL; // BSE_NORMALに移行
-            Serial.println("BSE cnt is successfully");
-            lastReceiveTime = now;
-        }
+            if(IsReceivedData == true) { // IsreceivedData == trueになるまでbseState=BSE_SYNCで保持
+                ExpecteCnt = (receivedCnt +1) % 10;
+                bseState = BSE_NORMAL; // BSE_NORMALに移行
+                Serial.println("BSE cnt is successfully");
+                lastReceiveTime = now;
+            }
 
             break;
         
@@ -64,34 +65,31 @@ void BSE_monitor() {
                 bseState = BSE_SYNC;
             }
             byte brake = 0;
-            brake = brake_val(average_max_val); //TODO BSEの値をどう送るか CANか、何かしらarduinoから直接送ってしまうのか
+            brake = brake_val();
             txBuf[1] = brake; // txBuf[1]にbrakeの値を格納
-            CAN0.sendMsgBuf(0x100, 0, 8, txBuf); // ID100でtxBufを送信
+            CAN0.sendMsgBuf(0x50, 0, 8, txBuf); // ID100でtxBufを送信
             brake_lanp(brake);
-            // if (IsHardBrake(brake, average_max_val) == true) {
-
-            // }
             Serial.print("brake_val: ");Serial.println(brake);
 
             break;
         case BSE_ERR:
             Serial.println("BSE_ERR");
             txBuf[7] = 0xFF; // txBuf[7]にFFを格納
-            CAN0.sendMsgBuf(0x100, 0, 8, txBuf); // ID100でtxBufを送信
+            CAN0.sendMsgBuf(0x50, 0, 8, txBuf); // ID100でtxBufを送信
     }
 }
 
-void receiveID100() { // ID100のメッセージを受け取る
+void receiveID49() { // ID100のメッセージを受け取る
     if(CAN0.checkReceive() == CAN_MSGAVAIL) {
         CAN0.readMsgBuf(&rxID, &rxlen, rxBuf);
-        if(rxID == 0x100) {
+        if(rxID == 0x49) {
             receivedCnt = rxBuf[0]; // 受信したデータの0byte目をrecivedcntに代入
-            IsReceivedData = true; // BSEからID100受信
+            IsReceivedData = true; // BSEからID49受信
         }
     }
 }
 
-int brake_val(int& average_max_val) {
+int brake_val() {
     long sum = 0;
     int average_val = 0;
     int gain = 200;

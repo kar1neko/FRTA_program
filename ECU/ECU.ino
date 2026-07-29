@@ -1,5 +1,6 @@
 #include "ECU.h"
 #include "BSE.h"
+#include "APPS.h"
 #include <mcp_can_dfs.h>
 #include <mcp_can.h>
 
@@ -39,8 +40,12 @@ void setup() {
 }
 
 void loop() {
-    // BSE
-    receiveID100();
+    receiveID49(); // BSE
+    BSE_Pin_Setup();
+    APPS_Pin_Setup();
+
+
     BSE_monitor();
+    APPS_monitor();
 
 }

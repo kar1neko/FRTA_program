@@ -7,11 +7,7 @@
 #define SPI_CS_PIN 10
 #define CAN0_INT 2
 
-extern MCP_CAN CAN0;
-extern byte ID100[8];
-extern bool CanUseMCP2515;
-
 void CAN_Setup();
-void receiveID100();
+void receiveID49();
 
 #endif

@@ -1,4 +1,10 @@
 CAN_BSE/.vscode
 build/
 .clangd
-motor/CAN_MotorControl_Demo/log
+motor/CAN_MotorControl_Demo/log/
+.cache/
+core/
+libraries/
+.d
+.cache
+.merged

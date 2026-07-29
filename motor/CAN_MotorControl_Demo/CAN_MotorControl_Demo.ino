@@ -23,11 +23,13 @@ MCP_CAN_lib-master : https://github.com/coryjfowler/MCP_CAN_lib
 // ライブラリヘッダのインクルード
 #include <SPI.h>
 #include <mcp_can.h>
+#include "Arduino.h"
 #include "NI_CU.h"
+#include "mcp_can_dfs.h"
 
 
 //入力ピン
-#define ACCEL_POINT 5
+#define ACCEL_POINT 5 // APPSから状態受け取り
 #define IGNITION_SW 4
 #define SPI_CS_PIN 10
 #define CAN0_INT 2
@@ -60,10 +62,13 @@ void Pin_Setup(void);
 void CAN_Setup(void);
 void Sequence_Setup(void);
 //各データ入力関数
-void CAN_ID101_Read(void);;
+void CAN_ID101_Read(void);
+void CAN_APPS_Read();
 int Accel_Read(void);
 //データ出力関数
 void Upload_CAN(byte buf[8]);
+
+byte accel = 0;
 
 class PIDcontroller {
   private:
@@ -118,7 +123,6 @@ extern byte mcprun;
 
 void loop() {
   //input data
-  byte accel=0;
   word mcrev = (word)NICU.dataPut(MC_Rev);
   word mctrq = (word)NICU.dataPut(MC_Trq);
   Sequence_Setup();
@@ -126,8 +130,6 @@ void loop() {
   // byte tx[8] = {0x12, 0x34, 0x56, 0x78, 0xAA, 0xBB, 0xCC, 0xDD};
   // CAN0.sendMsgBuf(0x101, 0, 8, tx);
   
-  accel=Accel_Read();
-  Serial.print("accel: ");Serial.print(accel);
   Serial.print(" mcrev: ");Serial.print(mcrev);
   Serial.print(" mctrq: ");Serial.print(mctrq);
   // Serial.print(" rege_flag: ");
@@ -141,8 +143,16 @@ void loop() {
   // if(NICU.getPidStartFlag() == true) {
   //   wri = PID_Control(val);
   // }
-  
-  NICU.torqueWrite(accel); // アクセル入力値
+
+  //* APPS処理
+  CAN_APPS_Read();
+  int APPS_state = digitalRead(ACCEL_POINT);
+  if(APPS_state == HIGH) {
+    NICU.torqueWrite(accel); // アクセル入力値
+  } else if (APPS_state == LOW) {
+    accel = 0;
+    NICU.torqueWrite(accel);
+  }
   NICU.limiterWrite(0x09, 0x10); // 出力制限値
   
   for (int i = 0; i < 8; i++) ID100[i]= NICU.dataPut(VCM_ORDER,i);
@@ -163,7 +173,6 @@ if (millis() - setup_StartTime >= 1000) {
 }
 
 void Pin_Setup(void){
-  pinMode(ACCEL_POINT, INPUT);
   pinMode(IGNITION_SW, INPUT_PULLUP);
   pinMode(CAN0_INT, INPUT_PULLUP); // INTをプルアップ
 }
@@ -222,21 +231,22 @@ void CAN_ID101_Read(){
   }
 }
 
-int Accel_Read(void){
-  int actual_value[10]={};
-  int average_value=0;
-  byte accel_limit=0x10;  // これ何？
-  for(int i=0;i<10;i++){
-    *(actual_value+i)=analogRead(ACCEL_POINT);
-    average_value+=*(actual_value+i);
-  }
-  // Serial.print("before");Serial.println(average_value);
-  average_value/=200;
-  average_value*=0.249266862170088;//(255/1023)
-  // Serial.print("after");Serial.println(average_value);
+// ここはAPPSで算出するため、コメントアウト
+// int Accel_Read(void){
+//   int actual_value[10]={};
+//   int average_value=0;
+//   byte accel_limit=0x10;  // これ何？
+//   for(int i=0;i<10;i++){
+//     *(actual_value+i)=analogRead(ACCEL_POINT);
+//     average_value+=*(actual_value+i);
+//   }
+//   // Serial.print("before");Serial.println(average_value);
+//   average_value/=200;
+//   average_value*=0.249266862170088;//(255/1023)
+//   // Serial.print("after");Serial.println(average_value);
   
-  return average_value;
-}
+//   return average_value;
+// }
 
 void Upload_CAN(byte buf[8]){
   // 送信データ:  ID = 0x100,0,データ長=8,データ=Tx_ID100[8]
@@ -252,4 +262,14 @@ byte PID_Control(PIDcontroller& pidcon) {
   output = constrain(output, 0.0, 255.0); // scalling
   word output_word = (word)output;
   return output_word;
+}
+
+// APPSから受け取ったアクセルの値の反映
+void CAN_APPS_Read(byte &accel) {
+  if(CAN0.checkReceive() == CAN_MSGAVAIL) {
+    CAN0.readMsgBuf(&id, &len, buf);
+    if(id == 0x51) {
+      accel = buf[1];
+    }
+  }
 }

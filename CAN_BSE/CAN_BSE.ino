@@ -1,12 +1,13 @@
 #include <SPI.h>
 #include <mcp_can.h>
+#include <mcp_can.cpp>
 
 #define SPI_CS_PIN 10
 #define CAN0_INT 2
 
 MCP_CAN CAN0(SPI_CS_PIN);
 
-char ID100[8] = {};
+char txBuf[8] = {0};
 
 void Pin_Setup();   
 void CAN_Setup();
@@ -49,16 +50,16 @@ void CAN_Setup() {
 // byte ID100[8] = {0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x08};
 
 unsigned long ID100_Timecnt = 0;
-void send_data(const unsigned long now, byte ID100[8]) {
+void send_data(const unsigned long now, byte txBuf[8]) {
     if (now - ID100_Timecnt > 50) { // 50ms更新
         static uint8_t cnt=0;
-        ID100[0] = cnt++;
+        txBuf[0] = cnt++;
         if(cnt == 10) {
             cnt=0;
             Serial.println("cnt reset");
         }
         ID100_Timecnt = now;
-        CAN0.sendMsgBuf(0x100, 0, 8, ID100);
+        CAN0.sendMsgBuf(0x50, 0, 8, txBuf);
         Serial.print(" cnt: ");Serial.print(cnt);
     }
     
@@ -75,9 +76,9 @@ void setup() {
 void loop() {
     //! use millies() this line.
     unsigned long now = millis();
-
+    send_data(now, txBuf);
     if(CanUseMCP2515 == true) {
-        send_data(now, ID100);
+        
         // Serial.println("txData sent successfully");
     } else {
         Serial.println("txData sent failed");
