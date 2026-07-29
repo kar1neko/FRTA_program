@@ -43,6 +43,8 @@ void BSE_monitor() {
                 bseState = BSE_NORMAL; // BSE_NORMALに移行
                 Serial.println("BSE cnt is successfully");
                 lastReceiveTime = now;
+            } else {
+                Serial.println("BSE waiting...");
             }
 
             break;

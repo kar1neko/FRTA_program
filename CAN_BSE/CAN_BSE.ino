@@ -1,6 +1,7 @@
 #include <SPI.h>
 #include <mcp_can.h>
-#include <mcp_can.cpp>
+#include <mcp_can_dfs.h>
+// #include "mcp_can.cpp"
 
 #define SPI_CS_PIN 10
 #define CAN0_INT 2

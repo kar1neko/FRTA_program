@@ -2,14 +2,12 @@
 #include "Arduino.h"
 #include "ECU.h"
 #include <SPI.h>
-// #include <cstdint>
-// #include <cstdlib>
 #include <mcp_can.h>
 #include <mcp_can_dfs.h>
 
 uint8_t average_val_1 = 0;
 uint8_t average_val_2 = 0;
-int average_val = 0;
+uint8_t average_val = 0;
 int raw_data = 0;
 int raw_data_1 = 0;
 int raw_data_2 = 0;
@@ -19,11 +17,11 @@ const int basics = 1000 * 0.1; // 妥当性基準値 //? ここは実機ない�
 int diff = 0;
 uint8_t accel = 0;
 
-constexpr uint8_t ACCEL_SENSOR_1 = 5;
-constexpr uint8_t ACCEL_SENSOR_2 = 6;
+constexpr uint8_t ACCEL_SENSOR_1 = A5;
+constexpr uint8_t ACCEL_SENSOR_2 = A6;
 constexpr uint8_t implasbility = 7;
 
-void Accel_val(uint8_t ACCEL_PIN, int &average_val, int &raw_data) { // 各アクセルペダルの入力値
+void Accel_val(uint8_t ACCEL_PIN, uint8_t &average_val, int &raw_data) { // 各アクセルペダルの入力値
     long sum = 0;
     int gain = 200;
     float scalling = 255.0 / 1023.0;
@@ -54,12 +52,8 @@ APPS_Status appsState = APPS_NORMAL;
 void APPS_monitor() {
     switch (appsState) {
         case APPS_NORMAL:
-            Accel_val(ACCEL_SENSOR_1, average_val, raw_data);
-            average_val_1 = average_val;
-            raw_data_1 = raw_data;
-            Accel_val(ACCEL_SENSOR_2, average_val, raw_data_2);
-            average_val_2 = average_val;
-            raw_data_2 = raw_data;
+            Accel_val(ACCEL_SENSOR_1, average_val_1, raw_data_1);
+            Accel_val(ACCEL_SENSOR_2, average_val_2, raw_data_2);
             diff = abs(raw_data_1 - raw_data_2); // 現在のアクセルペダルの差
             if (diff >= basics) {
                 digitalWrite(implasbility, LOW); // 異常発生時implasbility=LOW
@@ -82,6 +76,7 @@ void APPS_monitor() {
             txBuf[1] = accel; // アクセル値格納
             txBuf[0] = 0x01; // ステータス格納(for debug)
             CAN0.sendMsgBuf(0x51, 0, 8, txBuf); // txBuf出力
+            Serial.println("APPS Normal");
 
             break;
 

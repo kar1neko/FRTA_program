@@ -1,3 +1,4 @@
+#include "Arduino.h"
 #include "ECU.h"
 #include "BSE.h"
 #include "APPS.h"
@@ -35,17 +36,18 @@ void setup() {
     Serial.begin(115200);
 
     BSE_Pin_Setup();
+    APPS_Pin_Setup();
     CAN_Setup();
     
 }
 
 void loop() {
-    receiveID49(); // BSE
-    BSE_Pin_Setup();
-    APPS_Pin_Setup();
-
-
-    BSE_monitor();
-    APPS_monitor();
-
+    static unsigned long lastRun = 0;
+    if(millis() - lastRun >= 10) {
+        lastRun = millis();
+        receiveID49(); // BSE
+    
+        BSE_monitor();
+        APPS_monitor();
+    }
 }
