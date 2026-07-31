@@ -57,10 +57,10 @@ void send_data(const unsigned long now, byte txBuf[8]) {
         txBuf[0] = cnt++;
         if(cnt == 10) {
             cnt=0;
-            Serial.println("cnt reset");
+            Serial.println(" cnt reset");
         }
         ID100_Timecnt = now;
-        CAN0.sendMsgBuf(0x50, 0, 8, txBuf);
+        CAN0.sendMsgBuf(0x49, 0, 8, txBuf);
         Serial.print(" cnt: ");Serial.print(cnt);
     }
     

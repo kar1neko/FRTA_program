@@ -37,7 +37,7 @@ void BSE_monitor() {
     // Serial.print("received: ");Serial.print(receivedCnt);
     // Serial.print(" expect: ");Serial.println(ExpecteCnt);
     switch (bseState) {
-        case BSE_SYNC: // 初回同期
+        case BSE_SYNC: {// 初回同期
             if(IsReceivedData == true) { // IsreceivedData == trueになるまでbseState=BSE_SYNCで保持
                 ExpecteCnt = (receivedCnt +1) % 10;
                 bseState = BSE_NORMAL; // BSE_NORMALに移行
@@ -48,8 +48,9 @@ void BSE_monitor() {
             }
 
             break;
+        }
         
-        case BSE_NORMAL:
+        case BSE_NORMAL: {
             Serial.println("BSE_NORMAL");
             if(IsReceivedData == true) {
                 IsReceivedData = false;
@@ -62,6 +63,7 @@ void BSE_monitor() {
             if (now - lastReceiveTime >= errTimeLimit) {
                         bseState = BSE_ERR; // BSE_ERRに移行
                         Serial.println("BSE error occurred. transit ERROR MODE");
+                        return;
             } else if(IsReceivedData == true) { // 100ms以内に信号復帰の場合、BSE_SYNCに移行
                 IsReceivedData = false;
                 bseState = BSE_SYNC;
@@ -74,10 +76,12 @@ void BSE_monitor() {
             Serial.print("brake_val: ");Serial.println(brake);
 
             break;
-        case BSE_ERR:
+        }
+        case BSE_ERR: {
             Serial.println("BSE_ERR");
             txBuf[7] = 0xFF; // txBuf[7]にFFを格納
             CAN0.sendMsgBuf(0x50, 0, 8, txBuf); // ID100でtxBufを送信
+        }
     }
 }
 
@@ -86,7 +90,7 @@ void receiveID49() { // ID100のメッセージを受け取る
         CAN0.readMsgBuf(&rxID, &rxlen, rxBuf);
         if(rxID == 0x49) {
             receivedCnt = rxBuf[0]; // 受信したデータの0byte目をrecivedcntに代入
-            IsReceivedData = true; // BSEからID49受信
+            IsReceivedData = true; // BSEからID50受信
         }
     }
 }
