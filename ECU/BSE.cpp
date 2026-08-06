@@ -17,6 +17,7 @@ const long errTimeLimit = 100; // 100ms
 const unsigned long now = millis();
 bool IsReceivedData = false;
 long lastReceiveTime = 0;
+bool IsAnalogVol_Fault = false;
 
 constexpr uint8_t BRAKE_POINT = 5; // ブレーキペダル入力ピン
 constexpr uint8_t BRAKE_LANP_POINT = 7; // ブレーキランプ出力ピン
@@ -68,6 +69,14 @@ void BSE_monitor() {
                 IsReceivedData = false;
                 bseState = BSE_SYNC;
             }
+
+            analogVol_FaultDetection();
+            if(IsAnalogVol_Fault == true) {
+                bseState = BSE_ERR;
+                Serial.println("AnalogSignal value is abnormal. transit ERROR MODE");
+                return; 
+            }
+            
             byte brake = 0;
             brake = brake_val();
             txBuf[1] = brake; // txBuf[1]にbrakeの値を格納
@@ -115,7 +124,7 @@ void BSE_Pin_Setup() {
     pinMode(BRAKE_LANP_POINT, OUTPUT);
 }
 
-//! 動作未確認
+//! 実機動作未確認
 // ブレーキランプ点灯判断
 void brake_lanp(byte brake) {
     if (brake >= 1) { // ブレーキペダルから受け取った値が１以上の時、
@@ -123,5 +132,20 @@ void brake_lanp(byte brake) {
     } else {
         digitalWrite(BRAKE_LANP_POINT, LOW);
     }
-    
+}
+
+// 実機動作未確認
+// 正常状態を検証
+void analogVol_FaultDetection() {
+    // 最大値、最小値の設定
+    int max_val = 980;
+    int min_val = 100;
+    if (analogRead(BRAKE_POINT) >= max_val || min_val <= min_val) {
+        IsAnalogVol_Fault = true;
+    }
+}
+
+//  BSEStateがBSE_ERRとなったか判断
+bool isBSEErr() {
+    return (bseState == BSE_ERR);
 }

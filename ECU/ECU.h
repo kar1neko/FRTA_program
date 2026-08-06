@@ -3,11 +3,14 @@
 
 #include <SPI.h>
 #include <mcp_can.h>
+#include <Arduino.h>
 
 #define SPI_CS_PIN 10
 #define CAN0_INT 2
 
 void CAN_Setup();
 void receiveID49();
+
+extern bool IsBSE_Fault;
 
 #endif

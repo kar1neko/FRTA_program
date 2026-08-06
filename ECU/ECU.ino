@@ -8,6 +8,8 @@
 MCP_CAN CAN0(SPI_CS_PIN);
 
 bool CanUseMCP2515 = false;
+bool IsBSE_Fault = false;
+
 void CAN_Setup() {
     if(CAN0.begin(MCP_ANY, CAN_500KBPS, MCP_8MHZ) == CAN_OK) {
         CanUseMCP2515 = true;
@@ -48,6 +50,9 @@ void loop() {
         receiveID49(); // BSE
     
         BSE_monitor();
+        if (isBSEErr()) {
+            IsBSE_Fault = true;
+        }
         APPS_monitor();
     }
 }
