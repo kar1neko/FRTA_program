@@ -1,3 +1,4 @@
+#line 1 "/home/kanek/project/frta/program/motor/CAN_MotorControl_Demo/CAN_MotorControl_Demo.ino"
 /// altimate kasu
 //TODO RTDの信号がLOW状態の時アクセルの出力信号を0に固定
 //TODO IGNITIONはREADY_OKになったのであればすぐにHIGHにする
@@ -26,11 +27,10 @@ MCP_CAN_lib-master : https://github.com/coryjfowler/MCP_CAN_lib
 #include "Arduino.h"
 #include "NI_CU.h"
 #include "mcp_can_dfs.h"
-#include "ECU.h"
-#include "BSE.h"
+#include "ECU.h" 
+
 
 //入力ピン
-// FIXME: このピンはAPPS側何もしていないので動作しない
 #define ACCEL_POINT 5 // APPSから状態受け取り
 #define IGNITION_SW 4
 #define SPI_CS_PIN 10
@@ -65,44 +65,53 @@ void CAN_Setup(void);
 void Sequence_Setup(void);
 //各データ入力関数
 void CAN_ID101_Read(void);
-void CAN_APPS_Read(byte &accel_rec_APPS);
+void CAN_APPS_Read();
 int Accel_Read(void);
 //データ出力関数
-void Upload_CAN(const byte buf[8]);
+void Upload_CAN(byte buf[8]);
 
-byte accel_rec_APPS = 0;
+byte accel = 0;
 
-// class PIDcontroller {
-//   private:
-//     double kp_t, ki_t, kd_t;
-//     double prev_err=0.0, integral=0.0;
-//     double out_min, out_max;
+class PIDcontroller {
+  private:
+    double kp_t, ki_t, kd_t;
+    double prev_err=0.0, integral=0.0;
+    double out_min, out_max;
 
-//   public:
-//     PIDcontroller(double kp, double ki, double kd, double out_min = 0.0, double out_max = 8.0)
-//       :kp_t(kp), ki_t(ki), kd_t(kd), prev_err(0.0), integral(0.0), out_min(out_min), out_max(out_max) {}
+  public:
+    PIDcontroller(double kp, double ki, double kd, double out_min = 0.0, double out_max = 8.0)
+      :kp_t(kp), ki_t(ki), kd_t(kd), prev_err(0.0), integral(0.0), out_min(out_min), out_max(out_max) {}
 
-//       double update(double target_rpm, double cur_rpm, long long start_time) {
-//         long long dt = start_time;
-//         double err = target_rpm - cur_rpm;
-//         integral += err;
-//         double diff = (err - prev_err) / dt;
-//         prev_err = err;
+      double update(double target_rpm, double cur_rpm, long long start_time) {
+        long long dt = start_time;
+        double err = target_rpm - cur_rpm;
+        integral += err;
+        double diff = (err - prev_err) / dt;
+        prev_err = err;
         
-//         double temp_result = kp_t * err + ki_t * integral + kd_t * diff;
-//         double result = constrain(temp_result, out_min, out_max);
-//         Serial.print("constrated result: ");Serial.println(result);
+        double temp_result = kp_t * err + ki_t * integral + kd_t * diff;
+        double result = constrain(temp_result, out_min, out_max);
+        Serial.print("constrated result: ");Serial.println(result);
 
-//         return result;
-//       }
-// };
+        return result;
+      }
+};
 
 // PID制御関数
-// // byte PID_Control(PIDcontroller& pidcon);
+byte PID_Control(PIDcontroller& pidcon);
 
-// //* PIDゲイン設定
-// PIDcontroller val(0.15, 0.01, 0.02);
+//* PIDゲイン設定
+PIDcontroller val(0.15, 0.01, 0.02);
 
+#line 105 "/home/kanek/project/frta/program/motor/CAN_MotorControl_Demo/CAN_MotorControl_Demo.ino"
+void setup();
+#line 125 "/home/kanek/project/frta/program/motor/CAN_MotorControl_Demo/CAN_MotorControl_Demo.ino"
+void loop();
+#line 214 "/home/kanek/project/frta/program/motor/CAN_MotorControl_Demo/CAN_MotorControl_Demo.ino"
+void CAN_ID101_Read();
+#line 270 "/home/kanek/project/frta/program/motor/CAN_MotorControl_Demo/CAN_MotorControl_Demo.ino"
+void CAN_APPS_Read(byte &accel);
+#line 105 "/home/kanek/project/frta/program/motor/CAN_MotorControl_Demo/CAN_MotorControl_Demo.ino"
 void setup() {
   Serial.begin(115200);
   unsigned long start_time = millis();
@@ -146,14 +155,16 @@ void loop() {
   //   wri = PID_Control(val);
   // }
 
-  // FIXME: 直さないといけないここ
-  //* APPS, BSE処理
-  CAN_APPS_Read(accel_rec_APPS);
-  IsAPPS_Higher25 = (accel_rec_APPS > 63); // 255の25%を超えたらtrue
-  if ((IsInput_Brake && IsAPPS_Higher25) || IsBSE_Fault == true) {
-    accel_rec_APPS = 0; // ブレーキ入力時の踏み間違い、またはBSE異常時は強制停止
+  //* APPS処理
+  
+  CAN_APPS_Read();
+  int APPS_state = digitalRead(ACCEL_POINT);
+  if(APPS_state == HIGH) {
+    NICU.torqueWrite(accel); // アクセル入力値
+  } else if (APPS_state == LOW) {
+    accel = 0;
+    NICU.torqueWrite(accel);
   }
-  NICU.torqueWrite(accel_rec_APPS); // アクセル値をモータに入力
   NICU.limiterWrite(0x09, 0x10); // 出力制限値
   
   for (int i = 0; i < 8; i++) ID100[i]= NICU.dataPut(VCM_ORDER,i);
@@ -249,29 +260,28 @@ void CAN_ID101_Read(){
 //   return average_value;
 // }
 
-void Upload_CAN(const byte buf[8]){
+void Upload_CAN(byte buf[8]){
   // 送信データ:  ID = 0x100,0,データ長=8,データ=Tx_ID100[8]
   CAN0.sendMsgBuf(0x100, 0, 8, buf);
 }
 
-// byte PID_Control(PIDcontroller& pidcon) {
-//   unsigned long long start_time = millis();
-//   double target_rpm = 800;
-//   double cur_rpm = (int)NICU.dataPut(MC_Rev);
-//   double output = pidcon.update(target_rpm, cur_rpm, start_time);
+byte PID_Control(PIDcontroller& pidcon) {
+  unsigned long long start_time = millis();
+  double target_rpm = 800;
+  double cur_rpm = (int)NICU.dataPut(MC_Rev);
+  double output = pidcon.update(target_rpm, cur_rpm, start_time);
 
-//   output = constrain(output, 0.0, 255.0); // scalling
-//   word output_word = (word)output;
-//   return output_word;
-// }
+  output = constrain(output, 0.0, 255.0); // scalling
+  word output_word = (word)output;
+  return output_word;
+}
 
-// TODO:CAN受信だけどレスポンス大丈夫か？
 // APPSから受け取ったアクセルの値の反映
-void CAN_APPS_Read(byte &accel_rec_APPS) {
+void CAN_APPS_Read(byte &accel) {
   if(CAN0.checkReceive() == CAN_MSGAVAIL) {
     CAN0.readMsgBuf(&id, &len, buf);
     if(id == 0x51) {
-      accel_rec_APPS = buf[1];
+      accel = buf[1];
     }
   }
 }

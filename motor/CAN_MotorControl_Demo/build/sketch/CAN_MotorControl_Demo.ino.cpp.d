@@ -1,0 +1,19 @@
+/home/kanek/project/frta/program/motor/CAN_MotorControl_Demo/build/sketch/CAN_MotorControl_Demo.ino.cpp.o: \
+ /home/kanek/project/frta/program/motor/CAN_MotorControl_Demo/build/sketch/CAN_MotorControl_Demo.ino.cpp \
+ /home/kanek/.arduino15/packages/arduino/hardware/avr/1.8.8/libraries/SPI/src/SPI.h \
+ /home/kanek/.arduino15/packages/arduino/hardware/avr/1.8.8/cores/arduino/Arduino.h \
+ /home/kanek/.arduino15/packages/arduino/hardware/avr/1.8.8/cores/arduino/binary.h \
+ /home/kanek/.arduino15/packages/arduino/hardware/avr/1.8.8/cores/arduino/WCharacter.h \
+ /home/kanek/.arduino15/packages/arduino/hardware/avr/1.8.8/cores/arduino/WString.h \
+ /home/kanek/.arduino15/packages/arduino/hardware/avr/1.8.8/cores/arduino/HardwareSerial.h \
+ /home/kanek/.arduino15/packages/arduino/hardware/avr/1.8.8/cores/arduino/Stream.h \
+ /home/kanek/.arduino15/packages/arduino/hardware/avr/1.8.8/cores/arduino/Print.h \
+ /home/kanek/.arduino15/packages/arduino/hardware/avr/1.8.8/cores/arduino/Printable.h \
+ /home/kanek/.arduino15/packages/arduino/hardware/avr/1.8.8/cores/arduino/USBAPI.h \
+ /home/kanek/.arduino15/packages/arduino/hardware/avr/1.8.8/cores/arduino/Arduino.h \
+ /home/kanek/.arduino15/packages/arduino/hardware/avr/1.8.8/variants/standard/pins_arduino.h \
+ /home/kanek/Arduino/libraries/mcp_can/mcp_can.h \
+ /home/kanek/Arduino/libraries/mcp_can/mcp_can_dfs.h \
+ /home/kanek/project/frta/program/motor/CAN_MotorControl_Demo/build/sketch/NI_CU.h \
+ /home/kanek/Arduino/libraries/mcp_can/mcp_can_dfs.h \
+ /home/kanek/Arduino/libraries/ECU/ECU.h

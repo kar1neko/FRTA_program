@@ -1,3 +1,4 @@
+#line 1 "/home/kanek/project/frta/program/ECU/BSE.cpp"
 #include <SPI.h>
 #include "Arduino.h"
 #include <mcp_can.h>
@@ -17,15 +18,18 @@ const long errTimeLimit = 100; // 100ms
 const unsigned long now = millis();
 bool IsReceivedData = false;
 long lastReceiveTime = 0;
-bool IsAnalogVol_Fault = false;
-bool IsBrake_Input = false;
 
 constexpr uint8_t BRAKE_POINT = 5; // ブレーキペダル入力ピン
 constexpr uint8_t BRAKE_LANP_POINT = 7; // ブレーキランプ出力ピン
 
 extern MCP_CAN CAN0;
 
-// BSE_Statusの定義はヘッダファイル参照
+enum BSE_Status {
+    BSE_SYNC, // 同期
+    BSE_NORMAL, // 正常状態
+    BSE_ERR // エラー状態
+};
+
 BSE_Status bseState = BSE_SYNC; // 起動直後は初期値をBSE_SYNCにする
 
 void BSE_monitor() {
@@ -65,14 +69,6 @@ void BSE_monitor() {
                 IsReceivedData = false;
                 bseState = BSE_SYNC;
             }
-
-            analogVol_FaultDetection();
-            if(IsAnalogVol_Fault == true) {
-                bseState = BSE_ERR;
-                Serial.println("AnalogSignal value is abnormal. transit ERROR MODE");
-                return; 
-            }
-            
             byte brake = 0;
             brake = brake_val();
             txBuf[1] = brake; // txBuf[1]にbrakeの値を格納
@@ -109,9 +105,8 @@ int brake_val() {
         sum += analogRead(BRAKE_POINT);
     }
 
-    sum /= gain;
-    sum *= scalling; // スケーリング
-    average_val = sum;
+    average_val /= gain;
+    average_val *= scalling; // スケーリング
 
     return average_val;
 }
@@ -121,30 +116,13 @@ void BSE_Pin_Setup() {
     pinMode(BRAKE_LANP_POINT, OUTPUT);
 }
 
-//NOTE: 実機動作未確認
+//! 動作未確認
 // ブレーキランプ点灯判断
 void brake_lanp(byte brake) {
     if (brake >= 1) { // ブレーキペダルから受け取った値が１以上の時、
         digitalWrite(BRAKE_LANP_POINT, HIGH);
-        IsBrake_Input = true;
     } else {
         digitalWrite(BRAKE_LANP_POINT, LOW);
-        IsBrake_Input = false;
     }
-}
-
-//NOTE: 実機動作未確認
-// 正常状態を検証
-void analogVol_FaultDetection() {
-    // 最大値、最小値の設定
-    int max_val = 980;
-    int min_val = 100;
-    if (analogRead(BRAKE_POINT) >= max_val || min_val <= min_val) {
-        IsAnalogVol_Fault = true;
-    }
-}
-
-//  BSEStateがBSE_ERRとなったか判断
-bool isBSEErr() {
-    return (bseState == BSE_ERR);
+    
 }

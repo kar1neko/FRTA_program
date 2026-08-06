@@ -1,10 +1,9 @@
+#line 1 "/home/kanek/project/frta/program/motor/CAN_MotorControl_Demo/NI_CU.h"
 #ifndef HOKKAIDO_SFE_MC_LIBRARY
 #define HOKKAIDO_SFE_MC_LIBRARY
 
 #include <Arduino.h>
 #include <inttypes.h>
-
-extern bool IsAPPS_Higher25;
 
 //O=0,I=1,V=5,X=10,L=50,C=100,D=500,M=1000
 

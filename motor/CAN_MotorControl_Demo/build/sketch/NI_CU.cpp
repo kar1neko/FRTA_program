@@ -1,3 +1,4 @@
+#line 1 "/home/kanek/project/frta/program/motor/CAN_MotorControl_Demo/NI_CU.cpp"
 /*
 NIMC.cpp
 NISSAN inverter motor control
@@ -91,14 +92,6 @@ byte drep = 0;
 byte nulp = 0;
 byte revp = 0;
 byte pstp = 0;
-
-// Shared state used by the motor sketch
-// ブレーキの状態チェック
-bool IsBSE_Fault = false;
-// ブレーキ入力状態判断
-bool IsInput_Brake = false;
-// APPSの値が25%より高いか検証
-bool IsAPPS_Higher25 = false;
 
 // Control
 byte SFNICAN::CRC_Make(byte crc_buf[8])

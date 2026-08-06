@@ -1,3 +1,4 @@
+#line 1 "/home/kanek/project/frta/program/ECU/APPS.cpp"
 #include "APPS.h"
 #include "Arduino.h"
 #include "ECU.h"
@@ -13,19 +14,15 @@ int raw_data_1 = 0;
 int raw_data_2 = 0;
 extern MCP_CAN CAN0;
 static unsigned char txBuf[8] = {0};
-//NOTE: ここは実機ないのでわかりません(2026/07/29)
-const int basics = 1000 * 0.1; // 妥当性基準値
-int APPS_diff = 0;
-int APPS_raw_ave = 0;
+const int basics = 1000 * 0.1; // 妥当性基準値 //? ここは実機ないのでわかりません(2026/07/29)
+int diff = 0;
 uint8_t accel = 0;
-bool IsAPPS_Higher25 = false;
 
 constexpr uint8_t ACCEL_SENSOR_1 = A5;
 constexpr uint8_t ACCEL_SENSOR_2 = A6;
 constexpr uint8_t implasbility = 7;
 
-// 各アクセルペダルの入力値
-void Accel_val(uint8_t ACCEL_PIN, uint8_t &average_val, int &raw_data) { 
+void Accel_val(uint8_t ACCEL_PIN, uint8_t &average_val, int &raw_data) { // 各アクセルペダルの入力値
     long sum = 0;
     int gain = 200;
     float scalling = 255.0 / 1023.0;
@@ -58,11 +55,8 @@ void APPS_monitor() {
         case APPS_NORMAL:
             Accel_val(ACCEL_SENSOR_1, average_val_1, raw_data_1);
             Accel_val(ACCEL_SENSOR_2, average_val_2, raw_data_2);
-            APPS_diff = abs(raw_data_1 - raw_data_2); // 現在のアクセルペダルの差
-            APPS_raw_ave = (raw_data_1 + raw_data_2) / 2; // アクセル入力値生データの平均算出
-            // APPSの生データの平均値がAPPSの25%より高いか検証
-            IsAPPS_Higher25 = (APPS_raw_ave > (1024 * 0.25));
-            if (APPS_diff >= basics) {
+            diff = abs(raw_data_1 - raw_data_2); // 現在のアクセルペダルの差
+            if (diff >= basics) {
                 digitalWrite(implasbility, LOW); // 異常発生時implasbility=LOW
                 appsState = APPS_ERR;
                 txBuf[0] = 0xFF; // APPS state
